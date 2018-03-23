@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="com.MappingServices.model.UserExternal">
+		<field name="uuid" type="String" />
+		<field name="uid" type="long" />
+		<field name="Location" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+	</model>
+</model-hints>
