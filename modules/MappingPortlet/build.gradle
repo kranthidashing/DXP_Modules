@@ -14,4 +14,7 @@ dependencies {
 	compileOnly group: "com.liferay.portal", name: "com.liferay.util.java", version: "2.2.2"
 	compileOnly group: 'javax.mail', name: 'mail', version: '1.4.1'
 	compileInclude group: 'org.json', name: 'json', version: '20090211'
+	compileInclude group: "com.itextpdf", name: "itextpdf", version: "5.4.1"
+    compileInclude group: "com.itextpdf.tool", name: "xmlworker", version: "5.4.1"
+    compileInclude group: 'org.bouncycastle', name: 'bcpkix-jdk15on', version: '1.48'    
 }
