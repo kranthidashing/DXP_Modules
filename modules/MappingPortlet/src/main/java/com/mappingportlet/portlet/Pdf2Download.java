@@ -94,9 +94,10 @@ public class Pdf2Download extends MVCPortlet {
 			createFolder(request,themeDisplay);			
 		}
 		Folder rootfolder = getFolder(themeDisplay,"AshokLeyLand_User");
-		pdfoveride(themeDisplay,request,rootfolder,fileEntry,file);
+		String url =pdfoveride(themeDisplay,request,rootfolder,fileEntry,file);
+		
     }
-	public void pdfoveride(ThemeDisplay themeDisplay,ActionRequest request,Folder rootfolder,FileEntry fileEntry,File file) throws DocumentException, IOException, PortalException {
+	public String pdfoveride(ThemeDisplay themeDisplay,ActionRequest request,Folder rootfolder,FileEntry fileEntry,File file) throws DocumentException, IOException, PortalException {
 		 long timeNow = System.currentTimeMillis();
          final long latest = timeNow;
          String title = themeDisplay.getUser().getScreenName()+themeDisplay.getUserId()+latest;
@@ -110,7 +111,8 @@ public class Pdf2Download extends MVCPortlet {
          ServiceContext serviceContext = ServiceContextFactory.getInstance(DLFileEntry.class.getName(), request);
          FileEntry addFileEntry = DLAppServiceUtil.addFileEntry(themeDisplay.getScopeGroupId(), rootfolder.getFolderId(), fileEntry.getFileName(), fileEntry.getMimeType(), title, description, "", file, serviceContext);
          String url = themeDisplay.getPortalURL() + themeDisplay.getPathContext() + "/documents/" + themeDisplay.getScopeGroupId() + "/" + 
-        		 addFileEntry.getFolderId() +  "/" +addFileEntry.getTitle() ;
+        		 addFileEntry.getFolderId() +  "/" +addFileEntry.getTitle();
          System.out.println(url);
+         return url;
 	}
 }

@@ -23,3 +23,4 @@
 /plugins-sdk/dist
 /plugins-sdk/lib
 test-results
+modules/MappingPortlet/src/main/resources/content/email-notification-changeover.html
