@@ -39,16 +39,16 @@ import com.liferay.util.ContentUtil;
 	property = {
 		"com.liferay.portlet.display-category=category.Mapping",
 		"com.liferay.portlet.instanceable=true",
-		"javax.portlet.display-name=Pdf2FiledownloadPortlet",
+		"javax.portlet.display-name=Pdf3FiledownloadPortlet",
 		"javax.portlet.init-param.template-path=/",
 		"javax.portlet.init-param.view-template=/pdfview.jsp",
-		"javax.portlet.name=pdf2FiledownloadPortlet",
+		"javax.portlet.name=pdf3FiledownloadPortlet",
 		"javax.portlet.resource-bundle=content.Language",
 		"javax.portlet.security-role-ref=power-user,user"
 	},
 	service = Portlet.class
 )
-public class Pdf2Download extends MVCPortlet {
+public class Pdf3Download extends MVCPortlet {
 	public Folder createFolder(ActionRequest actionRequest,ThemeDisplay themeDisplay)
 	{
         Folder folder = null;
@@ -86,20 +86,23 @@ public class Pdf2Download extends MVCPortlet {
 	public void getfile(ActionRequest request,ActionResponse response) throws PortalException, DocumentException, IOException{
     	ThemeDisplay themeDisplay = (ThemeDisplay) request.getAttribute(WebKeys.THEME_DISPLAY);
     	System.out.println("Start======>"+new Date());
-    	long repositoryId = themeDisplay.getScopeGroupId();
-		Long parentFolderId = DLFolderConstants.DEFAULT_PARENT_FOLDER_ID;
-		Folder folder =DLAppServiceUtil.getFolder(themeDisplay.getScopeGroupId(), parentFolderId, "AshokLeyLand_Folder");
-		FileEntry fileEntry = DLAppServiceUtil.getFileEntry(repositoryId, folder.getFolderId(), "AshokLeyLandSample.pdf");
-		File file = DLFileEntryLocalServiceUtil.getFile(fileEntry.getFileEntryId(), "", true);
+    	long timeNow = System.currentTimeMillis();
+        final long latest = timeNow;
+		File file = new File("/"+themeDisplay.getUserId()+latest+".pdf");
 		boolean isFolderExist=isFolderExist(themeDisplay,"AshokLeyLand_User");
 		if(!isFolderExist){
 			createFolder(request,themeDisplay);			
 		}
 		Folder rootfolder = getFolder(themeDisplay,"AshokLeyLand_User");
-		String url =pdfoveride(themeDisplay,request,rootfolder,fileEntry,file);
+		String url =pdfoveride(themeDisplay,request,rootfolder,file);
+		System.out.println(url);
+		System.out.println(file.getName());
+		System.out.println(file.getAbsolutePath());
+		file.delete();
+		System.out.println("done");
 		System.out.println("end======>"+new Date());
     }
-	public String pdfoveride(ThemeDisplay themeDisplay,ActionRequest request,Folder rootfolder,FileEntry fileEntry,File file) throws DocumentException, IOException, PortalException {
+	public String pdfoveride(ThemeDisplay themeDisplay,ActionRequest request,Folder rootfolder,File file) throws DocumentException, IOException, PortalException {
 		 long timeNow = System.currentTimeMillis();
          final long latest = timeNow;
          String title = themeDisplay.getUser().getScreenName()+themeDisplay.getUserId()+latest;
@@ -111,7 +114,7 @@ public class Pdf2Download extends MVCPortlet {
          XMLWorkerHelper.getInstance().parseXHtml(writer, document,new StringReader(sb));
          document.close();
          ServiceContext serviceContext = ServiceContextFactory.getInstance(DLFileEntry.class.getName(), request);
-         FileEntry addFileEntry = DLAppServiceUtil.addFileEntry(themeDisplay.getScopeGroupId(), rootfolder.getFolderId(), fileEntry.getFileName(), fileEntry.getMimeType(), title, description, "", file, serviceContext);
+         FileEntry addFileEntry = DLAppServiceUtil.addFileEntry(themeDisplay.getScopeGroupId(), rootfolder.getFolderId(), file.getName(), "application/pdf", title, description, "", file, serviceContext);
          String url = themeDisplay.getPortalURL() + themeDisplay.getPathContext() + "/documents/" + themeDisplay.getScopeGroupId() + "/" + 
         		 addFileEntry.getFolderId() +  "/" +addFileEntry.getTitle();
          System.out.println(url);
