@@ -52,7 +52,7 @@ public class Courses extends MVCPortlet {
 			   	Date EndDate = new Date();
 			   	Long MaxSeats = 1000L;
 			   	Long lid = 0L;
-			//    ThemeDisplay themeDisplay = (ThemeDisplay) actionRequest.getAttribute(WebKeys.THEME_DISPLAY);
+			  //ThemeDisplay themeDisplay = (ThemeDisplay) actionRequest.getAttribute(WebKeys.THEME_DISPLAY);
 			    course _course = courseLocalServiceUtil.createcourse(CounterLocalServiceUtil.increment());
 			    _course.setCourseName(CourseName);
 			    _course.setFee(Fee);
