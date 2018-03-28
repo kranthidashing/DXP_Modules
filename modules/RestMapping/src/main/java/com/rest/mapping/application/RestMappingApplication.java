@@ -11,14 +11,15 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Application;
-import javax.ws.rs.core.MediaType;
 
 import org.osgi.service.component.annotations.Component;
 
+import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.json.JSONArray;
 import com.liferay.portal.kernel.json.JSONException;
 import com.liferay.portal.kernel.json.JSONFactoryUtil;
 import com.liferay.portal.kernel.json.JSONObject;
+import com.liferay.portal.kernel.util.Validator;
 import com.servicemapping.model.course;
 import com.servicemapping.model.location;
 import com.servicemapping.service.courseLocalServiceUtil;
@@ -65,31 +66,41 @@ public class RestMappingApplication extends Application {
 	}
 	@GET
 	@Path("/getlocationcourses")
-	@Produces(MediaType.TEXT_PLAIN)
-	public String getcourses() throws JSONException{
+	@Produces("application/json")
+	public String getcourses(@QueryParam("id") Long id) throws PortalException{
 		JSONObject json = JSONFactoryUtil.createJSONObject();
-		List<location> _loc = locationLocalServiceUtil.getlocations(0, locationLocalServiceUtil.getlocationsCount());
 		JSONArray createJSONArray = JSONFactoryUtil.createJSONArray();
+		if(Validator.isNotNull(id)){			
+			location loc = locationLocalServiceUtil.getlocation(id);
+			createJSONArray=getjsonarray(json,loc,createJSONArray);			
+		}
+		else{		
+		List<location> _loc = locationLocalServiceUtil.getlocations(0, locationLocalServiceUtil.getlocationsCount());		
 	    for (location loc : _loc){
-	    	JSONObject json2 = JSONFactoryUtil.createJSONObject();
-	    	
-	    	JSONArray createJSONArray1 = JSONFactoryUtil.createJSONArray();
-	    	long lid = loc.getLocationId();
-	    	String lname = loc.getLocationName();
-	    	List<course> getlocationcourses = courseLocalServiceUtil.getlocationcourses(loc.getLocationId());
-	    	 for (course lc : getlocationcourses){
-	    		 JSONObject json1 = JSONFactoryUtil.createJSONObject();
-	    		 json1.put("Courseid", lc.getCourseId());
-	    		 json1.put("CourseName", lc.getCourseName());
-	    		 json1.put("CourseFee", lc.getFee());
-	    		 createJSONArray1.put(json1);
-	    	 }
-	    	 json2.put("Location_Id",lid);
-	    	 json2.put("Location_Name",lname);
-	    	 json2.put("Course_Details",createJSONArray1);	  
-	    	 createJSONArray.put(json2);
-	    }
-		return json.put("DATA",createJSONArray).toJSONString();		
+	    	createJSONArray=getjsonarray(json,loc,createJSONArray);
+	    }			
 	}
-
+		return json.put("DATA",createJSONArray).toJSONString();	
+		
+	}
+	
+	public JSONArray getjsonarray(JSONObject json, location loc, JSONArray createJSONArray){
+		JSONObject json2 = JSONFactoryUtil.createJSONObject();	    	
+    	JSONArray createJSONArray1 = JSONFactoryUtil.createJSONArray();
+    	long lid = loc.getLocationId();
+    	String lname = loc.getLocationName();
+    	List<course> getlocationcourses = courseLocalServiceUtil.getlocationcourses(loc.getLocationId());
+    	 for (course lc : getlocationcourses){
+    		 JSONObject json1 = JSONFactoryUtil.createJSONObject();
+    		 json1.put("Courseid", lc.getCourseId());
+    		 json1.put("CourseName", lc.getCourseName());
+    		 json1.put("CourseFee", lc.getFee());
+    		 createJSONArray1.put(json1);
+    	 }
+    	 json2.put("Location_Id",lid);
+    	 json2.put("Location_Name",lname);
+    	 json2.put("Course_Details",createJSONArray1);	  
+    	 createJSONArray.put(json2);		
+		return createJSONArray;		
+	}
 }
