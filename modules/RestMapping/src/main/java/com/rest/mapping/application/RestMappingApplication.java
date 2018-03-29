@@ -80,8 +80,7 @@ public class RestMappingApplication extends Application {
 	    	createJSONArray=getjsonarray(json,loc,createJSONArray);
 	    }			
 	}
-		return json.put("DATA",createJSONArray).toJSONString();	
-		
+		return json.put("DATA",createJSONArray).toJSONString();		
 	}	
 	public JSONArray getjsonarray(JSONObject json, location loc, JSONArray createJSONArray){
 		JSONObject json2 = JSONFactoryUtil.createJSONObject();	    	
