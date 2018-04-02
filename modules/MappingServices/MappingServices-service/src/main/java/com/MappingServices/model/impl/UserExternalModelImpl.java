@@ -70,6 +70,7 @@ public class UserExternalModelImpl extends BaseModelImpl<UserExternal>
 			{ "uuid_", Types.VARCHAR },
 			{ "uid", Types.BIGINT },
 			{ "Location", Types.VARCHAR },
+			{ "PolicyNumber", Types.VARCHAR },
 			{ "createDate", Types.TIMESTAMP },
 			{ "modifiedDate", Types.TIMESTAMP }
 		};
@@ -79,11 +80,12 @@ public class UserExternalModelImpl extends BaseModelImpl<UserExternal>
 		TABLE_COLUMNS_MAP.put("uuid_", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("uid", Types.BIGINT);
 		TABLE_COLUMNS_MAP.put("Location", Types.VARCHAR);
+		TABLE_COLUMNS_MAP.put("PolicyNumber", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("createDate", Types.TIMESTAMP);
 		TABLE_COLUMNS_MAP.put("modifiedDate", Types.TIMESTAMP);
 	}
 
-	public static final String TABLE_SQL_CREATE = "create table Ashokleyland_UserExternal (uuid_ VARCHAR(75) null,uid LONG not null primary key,Location VARCHAR(75) null,createDate DATE null,modifiedDate DATE null)";
+	public static final String TABLE_SQL_CREATE = "create table Ashokleyland_UserExternal (uuid_ VARCHAR(75) null,uid LONG not null primary key,Location VARCHAR(75) null,PolicyNumber VARCHAR(75) null,createDate DATE null,modifiedDate DATE null)";
 	public static final String TABLE_SQL_DROP = "drop table Ashokleyland_UserExternal";
 	public static final String ORDER_BY_JPQL = " ORDER BY userExternal.uid ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY Ashokleyland_UserExternal.uid ASC";
@@ -99,8 +101,9 @@ public class UserExternalModelImpl extends BaseModelImpl<UserExternal>
 	public static final boolean COLUMN_BITMASK_ENABLED = GetterUtil.getBoolean(com.MappingServices.service.util.ServiceProps.get(
 				"value.object.column.bitmask.enabled.com.MappingServices.model.UserExternal"),
 			true);
-	public static final long UUID_COLUMN_BITMASK = 1L;
-	public static final long UID_COLUMN_BITMASK = 2L;
+	public static final long POLICYNUMBER_COLUMN_BITMASK = 1L;
+	public static final long UUID_COLUMN_BITMASK = 2L;
+	public static final long UID_COLUMN_BITMASK = 4L;
 
 	/**
 	 * Converts the soap model instance into a normal model instance.
@@ -118,6 +121,7 @@ public class UserExternalModelImpl extends BaseModelImpl<UserExternal>
 		model.setUuid(soapModel.getUuid());
 		model.setUid(soapModel.getUid());
 		model.setLocation(soapModel.getLocation());
+		model.setPolicyNumber(soapModel.getPolicyNumber());
 		model.setCreateDate(soapModel.getCreateDate());
 		model.setModifiedDate(soapModel.getModifiedDate());
 
@@ -187,6 +191,7 @@ public class UserExternalModelImpl extends BaseModelImpl<UserExternal>
 		attributes.put("uuid", getUuid());
 		attributes.put("uid", getUid());
 		attributes.put("Location", getLocation());
+		attributes.put("PolicyNumber", getPolicyNumber());
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
 
@@ -214,6 +219,12 @@ public class UserExternalModelImpl extends BaseModelImpl<UserExternal>
 
 		if (Location != null) {
 			setLocation(Location);
+		}
+
+		String PolicyNumber = (String)attributes.get("PolicyNumber");
+
+		if (PolicyNumber != null) {
+			setPolicyNumber(PolicyNumber);
 		}
 
 		Date createDate = (Date)attributes.get("createDate");
@@ -282,6 +293,32 @@ public class UserExternalModelImpl extends BaseModelImpl<UserExternal>
 
 	@JSON
 	@Override
+	public String getPolicyNumber() {
+		if (_PolicyNumber == null) {
+			return StringPool.BLANK;
+		}
+		else {
+			return _PolicyNumber;
+		}
+	}
+
+	@Override
+	public void setPolicyNumber(String PolicyNumber) {
+		_columnBitmask |= POLICYNUMBER_COLUMN_BITMASK;
+
+		if (_originalPolicyNumber == null) {
+			_originalPolicyNumber = _PolicyNumber;
+		}
+
+		_PolicyNumber = PolicyNumber;
+	}
+
+	public String getOriginalPolicyNumber() {
+		return GetterUtil.getString(_originalPolicyNumber);
+	}
+
+	@JSON
+	@Override
 	public Date getCreateDate() {
 		return _createDate;
 	}
@@ -342,6 +379,7 @@ public class UserExternalModelImpl extends BaseModelImpl<UserExternal>
 		userExternalImpl.setUuid(getUuid());
 		userExternalImpl.setUid(getUid());
 		userExternalImpl.setLocation(getLocation());
+		userExternalImpl.setPolicyNumber(getPolicyNumber());
 		userExternalImpl.setCreateDate(getCreateDate());
 		userExternalImpl.setModifiedDate(getModifiedDate());
 
@@ -408,6 +446,8 @@ public class UserExternalModelImpl extends BaseModelImpl<UserExternal>
 
 		userExternalModelImpl._originalUuid = userExternalModelImpl._uuid;
 
+		userExternalModelImpl._originalPolicyNumber = userExternalModelImpl._PolicyNumber;
+
 		userExternalModelImpl._setModifiedDate = false;
 
 		userExternalModelImpl._columnBitmask = 0;
@@ -435,6 +475,14 @@ public class UserExternalModelImpl extends BaseModelImpl<UserExternal>
 			userExternalCacheModel.Location = null;
 		}
 
+		userExternalCacheModel.PolicyNumber = getPolicyNumber();
+
+		String PolicyNumber = userExternalCacheModel.PolicyNumber;
+
+		if ((PolicyNumber != null) && (PolicyNumber.length() == 0)) {
+			userExternalCacheModel.PolicyNumber = null;
+		}
+
 		Date createDate = getCreateDate();
 
 		if (createDate != null) {
@@ -458,7 +506,7 @@ public class UserExternalModelImpl extends BaseModelImpl<UserExternal>
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(11);
+		StringBundler sb = new StringBundler(13);
 
 		sb.append("{uuid=");
 		sb.append(getUuid());
@@ -466,6 +514,8 @@ public class UserExternalModelImpl extends BaseModelImpl<UserExternal>
 		sb.append(getUid());
 		sb.append(", Location=");
 		sb.append(getLocation());
+		sb.append(", PolicyNumber=");
+		sb.append(getPolicyNumber());
 		sb.append(", createDate=");
 		sb.append(getCreateDate());
 		sb.append(", modifiedDate=");
@@ -477,7 +527,7 @@ public class UserExternalModelImpl extends BaseModelImpl<UserExternal>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(19);
+		StringBundler sb = new StringBundler(22);
 
 		sb.append("<model><model-name>");
 		sb.append("com.MappingServices.model.UserExternal");
@@ -494,6 +544,10 @@ public class UserExternalModelImpl extends BaseModelImpl<UserExternal>
 		sb.append(
 			"<column><column-name>Location</column-name><column-value><![CDATA[");
 		sb.append(getLocation());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>PolicyNumber</column-name><column-value><![CDATA[");
+		sb.append(getPolicyNumber());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>createDate</column-name><column-value><![CDATA[");
@@ -517,6 +571,8 @@ public class UserExternalModelImpl extends BaseModelImpl<UserExternal>
 	private String _originalUuid;
 	private long _uid;
 	private String _Location;
+	private String _PolicyNumber;
+	private String _originalPolicyNumber;
 	private Date _createDate;
 	private Date _modifiedDate;
 	private boolean _setModifiedDate;

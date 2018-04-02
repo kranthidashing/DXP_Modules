@@ -37,6 +37,7 @@ public class UserExternalSoap implements Serializable {
 		soapModel.setUuid(model.getUuid());
 		soapModel.setUid(model.getUid());
 		soapModel.setLocation(model.getLocation());
+		soapModel.setPolicyNumber(model.getPolicyNumber());
 		soapModel.setCreateDate(model.getCreateDate());
 		soapModel.setModifiedDate(model.getModifiedDate());
 
@@ -115,6 +116,14 @@ public class UserExternalSoap implements Serializable {
 		_Location = Location;
 	}
 
+	public String getPolicyNumber() {
+		return _PolicyNumber;
+	}
+
+	public void setPolicyNumber(String PolicyNumber) {
+		_PolicyNumber = PolicyNumber;
+	}
+
 	public Date getCreateDate() {
 		return _createDate;
 	}
@@ -134,6 +143,7 @@ public class UserExternalSoap implements Serializable {
 	private String _uuid;
 	private long _uid;
 	private String _Location;
+	private String _PolicyNumber;
 	private Date _createDate;
 	private Date _modifiedDate;
 }

@@ -7,7 +7,11 @@
 	<entity local-service="true" name="UserExternal" remote-service="true" uuid="true">
      <column name="uid" type="long" primary="true"></column>
      <column name="Location" type="String"></column>
+     <column name="PolicyNumber" type="String"></column>
 	 <column name="createDate" type="Date" />
-	 <column name="modifiedDate" type="Date" />     
+	 <column name="modifiedDate" type="Date" />
+	 <finder name="PolicyID" return-type="Collection">
+     <finder-column name="PolicyNumber"/>
+     </finder>     
 	</entity>
 </service-builder>

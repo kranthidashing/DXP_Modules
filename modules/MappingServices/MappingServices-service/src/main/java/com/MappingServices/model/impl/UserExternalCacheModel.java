@@ -66,7 +66,7 @@ public class UserExternalCacheModel implements CacheModel<UserExternal>,
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(11);
+		StringBundler sb = new StringBundler(13);
 
 		sb.append("{uuid=");
 		sb.append(uuid);
@@ -74,6 +74,8 @@ public class UserExternalCacheModel implements CacheModel<UserExternal>,
 		sb.append(uid);
 		sb.append(", Location=");
 		sb.append(Location);
+		sb.append(", PolicyNumber=");
+		sb.append(PolicyNumber);
 		sb.append(", createDate=");
 		sb.append(createDate);
 		sb.append(", modifiedDate=");
@@ -103,6 +105,13 @@ public class UserExternalCacheModel implements CacheModel<UserExternal>,
 			userExternalImpl.setLocation(Location);
 		}
 
+		if (PolicyNumber == null) {
+			userExternalImpl.setPolicyNumber(StringPool.BLANK);
+		}
+		else {
+			userExternalImpl.setPolicyNumber(PolicyNumber);
+		}
+
 		if (createDate == Long.MIN_VALUE) {
 			userExternalImpl.setCreateDate(null);
 		}
@@ -128,6 +137,7 @@ public class UserExternalCacheModel implements CacheModel<UserExternal>,
 
 		uid = objectInput.readLong();
 		Location = objectInput.readUTF();
+		PolicyNumber = objectInput.readUTF();
 		createDate = objectInput.readLong();
 		modifiedDate = objectInput.readLong();
 	}
@@ -151,6 +161,13 @@ public class UserExternalCacheModel implements CacheModel<UserExternal>,
 			objectOutput.writeUTF(Location);
 		}
 
+		if (PolicyNumber == null) {
+			objectOutput.writeUTF(StringPool.BLANK);
+		}
+		else {
+			objectOutput.writeUTF(PolicyNumber);
+		}
+
 		objectOutput.writeLong(createDate);
 		objectOutput.writeLong(modifiedDate);
 	}
@@ -158,6 +175,7 @@ public class UserExternalCacheModel implements CacheModel<UserExternal>,
 	public String uuid;
 	public long uid;
 	public String Location;
+	public String PolicyNumber;
 	public long createDate;
 	public long modifiedDate;
 }

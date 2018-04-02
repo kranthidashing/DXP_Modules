@@ -107,6 +107,21 @@ public interface UserExternalModel extends BaseModel<UserExternal> {
 	public void setLocation(String Location);
 
 	/**
+	 * Returns the policy number of this user external.
+	 *
+	 * @return the policy number of this user external
+	 */
+	@AutoEscape
+	public String getPolicyNumber();
+
+	/**
+	 * Sets the policy number of this user external.
+	 *
+	 * @param PolicyNumber the policy number of this user external
+	 */
+	public void setPolicyNumber(String PolicyNumber);
+
+	/**
 	 * Returns the create date of this user external.
 	 *
 	 * @return the create date of this user external

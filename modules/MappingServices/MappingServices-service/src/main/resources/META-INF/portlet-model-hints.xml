@@ -5,6 +5,7 @@
 		<field name="uuid" type="String" />
 		<field name="uid" type="long" />
 		<field name="Location" type="String" />
+		<field name="PolicyNumber" type="String" />
 		<field name="createDate" type="Date" />
 		<field name="modifiedDate" type="Date" />
 	</model>

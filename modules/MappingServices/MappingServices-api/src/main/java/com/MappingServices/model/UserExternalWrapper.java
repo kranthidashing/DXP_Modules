@@ -61,6 +61,7 @@ public class UserExternalWrapper implements UserExternal,
 		attributes.put("uuid", getUuid());
 		attributes.put("uid", getUid());
 		attributes.put("Location", getLocation());
+		attributes.put("PolicyNumber", getPolicyNumber());
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
 
@@ -85,6 +86,12 @@ public class UserExternalWrapper implements UserExternal,
 
 		if (Location != null) {
 			setLocation(Location);
+		}
+
+		String PolicyNumber = (String)attributes.get("PolicyNumber");
+
+		if (PolicyNumber != null) {
+			setPolicyNumber(PolicyNumber);
 		}
 
 		Date createDate = (Date)attributes.get("createDate");
@@ -163,6 +170,16 @@ public class UserExternalWrapper implements UserExternal,
 	@Override
 	public java.lang.String getLocation() {
 		return _userExternal.getLocation();
+	}
+
+	/**
+	* Returns the policy number of this user external.
+	*
+	* @return the policy number of this user external
+	*/
+	@Override
+	public java.lang.String getPolicyNumber() {
+		return _userExternal.getPolicyNumber();
 	}
 
 	/**
@@ -284,6 +301,16 @@ public class UserExternalWrapper implements UserExternal,
 	@Override
 	public void setNew(boolean n) {
 		_userExternal.setNew(n);
+	}
+
+	/**
+	* Sets the policy number of this user external.
+	*
+	* @param PolicyNumber the policy number of this user external
+	*/
+	@Override
+	public void setPolicyNumber(java.lang.String PolicyNumber) {
+		_userExternal.setPolicyNumber(PolicyNumber);
 	}
 
 	/**

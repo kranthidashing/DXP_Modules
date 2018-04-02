@@ -6,7 +6,7 @@
         <portlet-name>com.test.portlet.portlet.TestportletPortlet</portlet-name>
         <permissions>
             <supports>
-                <action-key>FirstKey</action-key>
+                <action-key>"FirstKey"</action-key>
                 <action-key>CONFIGURATION</action-key>
                 <action-key>VIEW</action-key>
             </supports>
@@ -17,7 +17,7 @@
                 <action-key>VIEW</action-key>
             </guest-defaults>
             <guest-unsupported>
-                <action-key>ACCESS_IN_CONTROL_PANEL</action-key>
+                <action-key>FirstKey</action-key>
                 <action-key>CONFIGURATION</action-key>
             </guest-unsupported>
         </permissions>

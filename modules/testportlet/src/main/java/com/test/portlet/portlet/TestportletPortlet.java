@@ -39,7 +39,5 @@ public class TestportletPortlet extends MVCPortlet {
         System.out.println(value);		
 	}
 	private static final Configuration _configuration = ConfigurationFactoryUtil
-		    .getConfiguration(TestportletPortlet.class.getClassLoader(), "portlet");
-
-		
+		    .getConfiguration(TestportletPortlet.class.getClassLoader(), "portlet-ext");
 }
