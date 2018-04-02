@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
 import javax.portlet.Portlet;
 import javax.portlet.PortletException;
 import javax.portlet.RenderRequest;
@@ -13,10 +11,15 @@ import javax.portlet.RenderResponse;
 
 import org.osgi.service.component.annotations.Component;
 
+import com.MappingServices.model.UserExternal;
+import com.MappingServices.service.UserExternalLocalServiceUtil;
 import com.liferay.counter.kernel.service.CounterLocalServiceUtil;
+import com.liferay.portal.kernel.dao.orm.DynamicQuery;
+import com.liferay.portal.kernel.dao.orm.DynamicQueryFactoryUtil;
+import com.liferay.portal.kernel.dao.orm.PropertyFactoryUtil;
+import com.liferay.portal.kernel.portlet.PortletClassLoaderUtil;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
-import com.liferay.portal.kernel.theme.ThemeDisplay;
-import com.liferay.portal.kernel.util.WebKeys;
+import com.liferay.portal.kernel.util.Validator;
 import com.servicemapping.model.course;
 import com.servicemapping.model.location;
 import com.servicemapping.service.courseLocalServiceUtil;
@@ -45,35 +48,21 @@ public class Courses extends MVCPortlet {
 			throws IOException, PortletException {
 		System.out.println("hello");
 		 try {
-			   	String LocationName ="Hyderabad";
-			   	String CourseName = "Java";
-			   	Long Fee = 2000L;
-			   	Date StartDate = new Date();
-			   	Date EndDate = new Date();
-			   	Long MaxSeats = 1000L;
-			   	Long lid = 0L;
-			  //ThemeDisplay themeDisplay = (ThemeDisplay) actionRequest.getAttribute(WebKeys.THEME_DISPLAY);
-			    course _course = courseLocalServiceUtil.createcourse(CounterLocalServiceUtil.increment());
-			    _course.setCourseName(CourseName);
-			    _course.setFee(Fee);
-			    _course.setStartDate(StartDate);
-			    _course.setEndDate(EndDate);
-			    _course.setMaxseats(MaxSeats);
-			    _course.setGroupId(0);
-			    _course.setCompanyId(0);
-			    _course.setUserId(0);
-			    _course.setUserName("ll");
-			    _course.setCreateDate(new Date());
-			    _course.setModifiedDate(new Date());
-			    List<location> _location = locationLocalServiceUtil.getlocations(0, locationLocalServiceUtil.getlocationsCount());
-			    for(location Newlocation : _location){
-			    	if(Newlocation.getLocationName().equalsIgnoreCase(LocationName)){
-			    		lid=Newlocation.getLocationId();
-			    		break;
-			    	}
-			    }
-			    courseLocalServiceUtil.addcourse(_course);
-			    courseLocalServiceUtil.addlocationcourse(lid,_course);
+			 System.out.println("111111");
+			    long uid = 0;
+				DynamicQuery dynamicQuery = DynamicQueryFactoryUtil.forClass(UserExternal.class,"ue", PortletClassLoaderUtil.getClassLoader());
+				System.out.println("111111");
+				dynamicQuery.add(PropertyFactoryUtil.forName("ue.uid").eq(38501));
+				System.out.println("111111");
+				List<UserExternal> UserExternal = UserExternalLocalServiceUtil.dynamicQuery(dynamicQuery);
+				if(Validator.isNotNull(UserExternal)){
+					System.out.println("111111");
+				}
+				System.out.println("111111");
+				/*for(UserExternal UE : UserExternal){
+					System.out.println("111111");
+				}
+				 System.out.println(uid);*/
 			  }
 			       catch (Exception e) {		     
 			   }

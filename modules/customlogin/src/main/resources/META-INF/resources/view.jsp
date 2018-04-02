@@ -34,14 +34,10 @@
 			<aui:input name="saveLastPath" type="hidden" value="<%= false %>" />
 			<aui:input name="redirect" type="hidden" value="<%= redirect %>" />
 					
-			<aui:input autoFocus="true" cssClass="clearable" label="email-address" name="login" showRequiredLabel="<%= false %>" type="text" value="">
+			<aui:input autoFocus="true" cssClass="clearable" label="PolicyNumber" name="login" showRequiredLabel="<%= false %>" type="text" value="">
 				<aui:validator name="required" />
 			</aui:input>
 
-			<aui:input name="password" showRequiredLabel="<%= false %>" type="password">
-				<aui:validator name="required" />
-			</aui:input>
-			
 			<aui:button-row>
 				<aui:button cssClass="btn-lg" type="submit" value="sign-in" />
 			</aui:button-row>
