@@ -210,6 +210,11 @@ public class UserExternalLocalServiceUtil {
 				   .dynamicQuery(dynamicQuery, start, end, orderByComparator);
 	}
 
+	public static java.util.List<com.MappingServices.model.UserExternal> findByPolicyID(
+		java.lang.String PolicyNumber) {
+		return getService().findByPolicyID(PolicyNumber);
+	}
+
 	/**
 	* Returns a range of all the user externals.
 	*

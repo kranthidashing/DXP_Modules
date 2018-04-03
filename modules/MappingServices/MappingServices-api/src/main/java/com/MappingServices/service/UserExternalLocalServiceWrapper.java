@@ -216,6 +216,12 @@ public class UserExternalLocalServiceWrapper implements UserExternalLocalService
 			orderByComparator);
 	}
 
+	@Override
+	public java.util.List<com.MappingServices.model.UserExternal> findByPolicyID(
+		java.lang.String PolicyNumber) {
+		return _userExternalLocalService.findByPolicyID(PolicyNumber);
+	}
+
 	/**
 	* Returns a range of all the user externals.
 	*

@@ -11,12 +11,8 @@ import org.osgi.service.component.annotations.Component;
 
 import com.MappingServices.model.UserExternal;
 import com.MappingServices.service.UserExternalLocalServiceUtil;
-import com.liferay.portal.kernel.dao.orm.DynamicQuery;
-import com.liferay.portal.kernel.dao.orm.DynamicQueryFactoryUtil;
-import com.liferay.portal.kernel.dao.orm.PropertyFactoryUtil;
 import com.liferay.portal.kernel.model.CompanyConstants;
 import com.liferay.portal.kernel.model.User;
-import com.liferay.portal.kernel.portlet.PortletClassLoaderUtil;
 import com.liferay.portal.kernel.portlet.bridges.mvc.BaseMVCActionCommand;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCActionCommand;
 import com.liferay.portal.kernel.security.auth.session.AuthenticatedSessionManagerUtil;
@@ -36,7 +32,7 @@ import com.liferay.portal.kernel.util.WebKeys;
 public class MyLoginMVCActionCommand extends BaseMVCActionCommand {
 
 	@Override
-	protected void doProcessAction(ActionRequest actionRequest,
+	public void doProcessAction(ActionRequest actionRequest,
 			ActionResponse actionResponse) throws Exception {
 
 		ThemeDisplay themeDisplay = (ThemeDisplay)actionRequest.getAttribute(
@@ -47,19 +43,18 @@ public class MyLoginMVCActionCommand extends BaseMVCActionCommand {
 		
 		HttpServletResponse response = PortalUtil.getHttpServletResponse(
 			actionResponse);
-		/*long uid = 0;
-		DynamicQuery dynamicQuery = DynamicQueryFactoryUtil.forClass(UserExternal.class, PortletClassLoaderUtil.getClassLoader());
-		dynamicQuery.add(PropertyFactoryUtil.forName("PolicyNumber").eq("22222"));
-		List<UserExternal> UserExternal = UserExternalLocalServiceUtil.dynamicQuery(dynamicQuery);
-		for(UserExternal UE : UserExternal){
+		
+		long uid = 0;
+		String policynumber = ParamUtil.getString(actionRequest, "login");
+		List<UserExternal> findByPolicyID = UserExternalLocalServiceUtil.findByPolicyID(policynumber);
+		for(UserExternal UE : findByPolicyID){
 			uid=UE.getUid();
 			break;
 		}
-		 System.out.println(uid);*/
-		 /* User user = UserLocalServiceUtil.getUser(uid);
-        System.out.println(user.getEmailAddress());*/
-		String login = "test@liferay.com";
-		String password = "jjj";
+		User user = UserLocalServiceUtil.getUser(uid);
+	    System.out.println("ssssssssss"+uid);
+		String login = user.getEmailAddress();
+		String password = "hhh";
 		boolean rememberMe = false;
 		String authType = CompanyConstants.AUTH_TYPE_EA;
 		

@@ -5,7 +5,7 @@
 </p>
 
 <c:choose>
-	<c:when test="<%= themeDisplay.isSignedIn() %>">
+	 <c:when test="<%= themeDisplay.isSignedIn() %>">
 
 		<%
 		String signedInAs = HtmlUtil.escape(user.getFullName());
@@ -18,13 +18,12 @@
 		%>
 
 		<liferay-ui:message arguments="<%= signedInAs %>" key="you-are-signed-in-as-x" translateArguments="<%= false %>" />
-	</c:when>
+	</c:when> 
 	<c:otherwise>
 	
 		<%
 		String redirect = ParamUtil.getString(request, "redirect");
-		%>
-	
+		%>	
 		<portlet:actionURL name="/login/login" var="loginURL">
 			<portlet:param name="mvcRenderCommandName" value="/login/login" />
 		</portlet:actionURL>

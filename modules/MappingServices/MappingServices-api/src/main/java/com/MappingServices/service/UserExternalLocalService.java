@@ -193,6 +193,8 @@ public interface UserExternalLocalService extends BaseLocalService,
 	public <T> List<T> dynamicQuery(DynamicQuery dynamicQuery, int start,
 		int end, OrderByComparator<T> orderByComparator);
 
+	public List<UserExternal> findByPolicyID(java.lang.String PolicyNumber);
+
 	/**
 	* Returns a range of all the user externals.
 	*

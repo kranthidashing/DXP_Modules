@@ -14,6 +14,9 @@
 
 package com.MappingServices.service.impl;
 
+import java.util.List;
+
+import com.MappingServices.model.UserExternal;
 import com.MappingServices.service.base.UserExternalLocalServiceBaseImpl;
 
 /**
@@ -32,6 +35,10 @@ import com.MappingServices.service.base.UserExternalLocalServiceBaseImpl;
  */
 public class UserExternalLocalServiceImpl
 	extends UserExternalLocalServiceBaseImpl {
+	public List<UserExternal> findByPolicyID(java.lang.String PolicyNumber) {
+		return getUserExternalPersistence().findByPolicyID(PolicyNumber);
+		}
+
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *

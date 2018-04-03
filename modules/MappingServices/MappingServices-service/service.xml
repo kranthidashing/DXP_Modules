@@ -12,6 +12,9 @@
 	 <column name="modifiedDate" type="Date" />
 	 <finder name="PolicyID" return-type="Collection">
      <finder-column name="PolicyNumber"/>
+      </finder>     
+     <finder name="PID" return-type="Collection">
+     <finder-column name="PolicyNumber"/>
      </finder>     
 	</entity>
 </service-builder>
