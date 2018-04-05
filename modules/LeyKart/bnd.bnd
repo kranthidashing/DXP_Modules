@@ -1,0 +1,4 @@
+Bundle-Name: LeyKart
+Bundle-SymbolicName: com.leykart
+Bundle-Version: 1.0.0
+Export-Package: com.leykart.constants

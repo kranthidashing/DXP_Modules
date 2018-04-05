@@ -40,7 +40,7 @@ import com.liferay.portal.kernel.util.Validator;
 	service = Portlet.class
 )
 public class Courses extends MVCPortlet {
-	@Override
+	/*@Override
 	public void doView(RenderRequest renderRequest, RenderResponse renderResponse)
 			throws IOException, PortletException {
 		System.out.println("hello");
@@ -50,5 +50,5 @@ public class Courses extends MVCPortlet {
 	}
 			       catch (Exception e) {		     
 	}
-	 }
+	 }*/
 }
