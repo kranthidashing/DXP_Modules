@@ -37,11 +37,11 @@
 					</span>
 				</#if>
 			</h1>
-		</div> -->
+		</div>
 
-		<!--<#if !is_signed_in>
+		<#if !is_signed_in>
 			<a data-redirect="${is_login_redirect_required?string}" href="${sign_in_url}" id="sign-in" rel="nofollow">${sign_in_text}</a>
-		</#if>
+		</#if>-->
 
 		<#if has_navigation && is_setup_complete>
 			<#include "${full_templates_path}/navigation.ftl" />
@@ -59,7 +59,7 @@
 			<@liferay_theme["wrap-portlet"] page="portlet.ftl">
 				<@liferay_util["include"] page=content_include />
 			</@>
-		</#if> -->
+		</#if> 
 	</section>
 
 	

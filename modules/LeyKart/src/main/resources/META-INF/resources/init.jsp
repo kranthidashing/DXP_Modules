@@ -8,8 +8,8 @@
 <%@ taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
 <liferay-theme:defineObjects />
 <portlet:defineObjects />
-
 <script>
+///$( "div" ).remove( "#wrapper" );
     define._amd = define.amd;
     define.amd = false;
 </script>

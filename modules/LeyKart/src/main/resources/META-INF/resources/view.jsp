@@ -1,8 +1,5 @@
 <%@ include file="/init.jsp" %>
 
-
-
-
 	<script type="text/javascript">
 	$(document).ready(function() {
 		if ( $(window).width() > 1200) { 
@@ -66,7 +63,7 @@
 </head>
 <body>
 
-<div id="fullpage">
+<div id="fullpage" class="fullpage-wrapper" style="height: 100%;position: relative;margin-left: -30px;margin-top: -64px;margin-right: -15px;">
 	
 	<!--Section-0 start-->
 	<div class="section" id="section0" style="background-color:none !important;">
@@ -84,15 +81,15 @@
 						<span class="icon-bar"></span>
 					  </button>
 					  <div id="logo">
-						<a class="navbar-brand" href="#"><img class="img-responsive" src="<%=request.getContextPath()%>/images/leykart-logo.png" alt="Leykart Ashok Leyland" /></a>
+						<a class="navbar-brand" href="welcome"><img class="img-responsive" src="<%=request.getContextPath()%>/images/leykart-logo.png" alt="Leykart Ashok Leyland" /></a>
 					  </div>
 					</div>
 					<div id="navbar" class="navbar-collapse collapse">
 					  <ul class="nav navbar-nav navbar-right">
-						<li class="active"><a href="index.html">HOME</a></li>
-						<li><a href="return-and-cancellation-policy.html">RETURN &amp; CANCELLATION POLICY</a></li>
-						<li><a href="faqs.html">FAQ'S</a></li>
-						<li><a href="enquiry.html">ENQUIRY</a></li>
+						<li class="active"><a href="welcome">HOME</a></li>
+						<li><a href="return-and-cancellation-policy">RETURN &amp; CANCELLATION POLICY</a></li>
+						<li><a href="faq">FAQ'S</a></li>
+						<li><a href="enquiry">ENQUIRY</a></li>
 					  </ul>
 					</div>
 				  </div>
@@ -342,8 +339,8 @@
 									  </div>
 									 
 									</div>
-									<a data-slide="prev" href="#media" class="left carousel-control">‹</a>
-									<a data-slide="next" href="#media" class="right carousel-control">›</a>
+									<a data-slide="prev" href="#media" class="left carousel-control glyphicon glyphicon-chevron-left"></a>
+									<a data-slide="next" href="#media" class="right carousel-control glyphicon glyphicon-chevron-right"></a>
 								  </div>                          
 								</div>
 							  </div>
@@ -516,8 +513,8 @@
 						© 2018 Ashok Leyland Limited, All Rights Reserved.
 					</div>
 					<div class="col-md-5 col-xs-12 privacy">
-						<a href="privacy-policy.html">Privacy Policy</a>&nbsp; &nbsp; | &nbsp; &nbsp;
-						<a href="terms-and-conditions.html">Terms &amp; Conditions</a>
+						<a href="privacy-policy">Privacy Policy</a>&nbsp; &nbsp; | &nbsp; &nbsp;
+						<a href="terms-and-conditions">Terms &amp; Conditions</a>
 					</div>
 				</div>
 			</div>
