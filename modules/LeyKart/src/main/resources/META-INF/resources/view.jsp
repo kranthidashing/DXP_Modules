@@ -81,15 +81,15 @@
 						<span class="icon-bar"></span>
 					  </button>
 					  <div id="logo">
-						<a class="navbar-brand" href="welcome"><img class="img-responsive" src="<%=request.getContextPath()%>/images/leykart-logo.png" alt="Leykart Ashok Leyland" /></a>
+						<a class="navbar-brand" href="/web/leykart/welcome"><img class="img-responsive" src="<%=request.getContextPath()%>/images/leykart-logo.png" alt="Leykart Ashok Leyland" /></a>
 					  </div>
 					</div>
 					<div id="navbar" class="navbar-collapse collapse">
 					  <ul class="nav navbar-nav navbar-right">
-						<li class="active"><a href="welcome">HOME</a></li>
-						<li><a href="return-and-cancellation-policy">RETURN &amp; CANCELLATION POLICY</a></li>
-						<li><a href="faq">FAQ'S</a></li>
-						<li><a href="enquiry">ENQUIRY</a></li>
+						<li class="active"><a href="/web/leykart/welcome">HOME</a></li>
+						<li><a href="/web/leykart/return-and-cancellation-policy">RETURN &amp; CANCELLATION POLICY</a></li>
+						<li><a href="/web/leykart/faq">FAQ'S</a></li>
+						<li><a href="/web/leykart/enquiry">ENQUIRY</a></li>
 					  </ul>
 					</div>
 				  </div>
@@ -513,8 +513,8 @@
 						© 2018 Ashok Leyland Limited, All Rights Reserved.
 					</div>
 					<div class="col-md-5 col-xs-12 privacy">
-						<a href="privacy-policy">Privacy Policy</a>&nbsp; &nbsp; | &nbsp; &nbsp;
-						<a href="terms-and-conditions">Terms &amp; Conditions</a>
+						<a href="/web/leykart/privacy-policy">Privacy Policy</a>&nbsp; &nbsp; | &nbsp; &nbsp;
+						<a href="/web/leykart/terms-and-conditions">Terms &amp; Conditions</a>
 					</div>
 				</div>
 			</div>
