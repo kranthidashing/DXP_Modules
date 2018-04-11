@@ -1,5 +1,18 @@
+<%@page import="com.leykartservice.service.TestmonialsLocalServiceUtil"%>
+<%@page import="com.leykartservice.model.Testmonials"%>
+<%@page import="java.util.List"%>
 <%@ include file="/init.jsp" %>
+<style>
+.red{
+font-size: 120%;
+color : rgb(255, 0, 0);
+}
+.green{
+font-size: 120%;
+color : rgb(60, 179, 113);
+}
 
+</style>
 	<script type="text/javascript">
 	$(document).ready(function() {
 		if ( $(window).width() > 1200) { 
@@ -63,13 +76,15 @@
 </head>
 <body>
 
-<div id="fullpage" class="fullpage-wrapper" style="height: 100%;position: relative;margin-left: -30px;margin-top: -64px;margin-right: -15px;">
+<div id="fullpage" class="fullpage-wrapper" style="height: 100%;position: relative;margin-left: -30px;margin-top: -76px;margin-right: -26px;">
 	
 	<!--Section-0 start-->
 	<div class="section" id="section0" style="background-color:none !important;">
 		<div class="intro">
 			<!-- Fixed navbar -->
-		<nav class="navbar navbar-default">
+		
+<%-- <%@ include file="/header.jsp" %> --%>
+<nav class="navbar navbar-default">
 				  <div class="container">
 					<div class="pull-right" style="margin-right:15px; font-size:22px; color:#0288cf; font-weight:bold;"><img src="<%=request.getContextPath()%>/images/phone-top-icon.png" style="float:left; margin-right:14px;" />1800-208-2525</div>
 					<div class="clear"></div>
@@ -191,20 +206,26 @@
 								<div class="col-md-12">
 								  <div class="carousel slide media-carousel" id="media">
 									<div class="carousel-inner">
-									  <div class="item  active">
+									<%List<Testmonials> testmonialsList=TestmonialsLocalServiceUtil.getTestmonialses(0, TestmonialsLocalServiceUtil.getTestmonialsesCount());
+									int i=0;
+									
+									while(i<TestmonialsLocalServiceUtil.getTestmonialsesCount()){%>
+									
+									  <div  <%if(i==0){ %> class="item active" <%}else{ %> class="item" <% }%>>
 										<div class="row">
-										  <!--testmonial start-->
+										  <!--testmonial start-->	
+										 <%if(i<TestmonialsLocalServiceUtil.getTestmonialsesCount()){%>	
 											<div class="col-md-4 col-sm-4 col-xs-12">
 												 <div class="parent-box red">
 													<div class="box">
 														<div class="dialog-box">
 															<p>
-																Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer varius tellus non nisl sodales semper. Morbi enim magna, congue non placerat vitae, dictum sit amet dui. Aliquam vehicula ut ligula sed pretium. Donec malesuada tortor eget elit. 
+																<%=testmonialsList.get(i).getMessage() %>
 															</p>
 														</div>
 														<div class="info">
 															<div style="text-align:right">
-																<h4>_Name Here</h4>
+																<h4><%=testmonialsList.get(i).getFullname() %></h4>
 															</div>
 															<div></div>
 																								
@@ -212,22 +233,24 @@
 													</div>
 												</div>
 												<div class="profile-circle">
-													<img style="max-height:100%;" src="<%=request.getContextPath()%>/images/profile-pic.png" />
+													<img style="border-radius: 50%; width:100px ; height: 100px"  src="<%=testmonialsList.get(i).getImagepath() %>" />
 												</div>
 											</div>
+											<%} %>
 											<!--testmonial end-->         
 										  <!--testmonial start-->
+										  <% if(i+1<TestmonialsLocalServiceUtil.getTestmonialsesCount()){ %>
 											<div class="col-md-4 col-sm-4 col-xs-12">
 												 <div class="parent-box red">
 													<div class="box">
 														<div class="dialog-box">
 															<p>
-																Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer varius tellus non nisl sodales semper. Morbi enim magna, congue non placerat vitae, dictum sit amet dui. Aliquam vehicula ut ligula sed pretium. Donec malesuada tortor eget elit. 
+																<%=testmonialsList.get(i+1).getMessage() %>
 															</p>
 														</div>
 														<div class="info">
 															<div style="text-align:right">
-																<h4>_Name Here</h4>
+																<h4><%=testmonialsList.get(i+1).getFullname() %></h4>
 															</div>
 															<div></div>
 																								
@@ -235,22 +258,24 @@
 													</div>
 												</div>
 												<div class="profile-circle">
-													<img style="max-height:100%;" src="<%=request.getContextPath()%>/images/profile-pic.png" />
+													<img style="border-radius: 50%; width:100px ; height: 100px" src="<%=testmonialsList.get(i+1).getImagepath() %>" />
 												</div>
 											</div>
+											<% } %>
 											<!--testmonial end-->
+											<% if(i+2<TestmonialsLocalServiceUtil.getTestmonialsesCount()){%>
 										  <!--testmonial start-->
 											<div class="col-md-4 col-sm-4 col-xs-12">
 												 <div class="parent-box red">
 													<div class="box">
 														<div class="dialog-box">
 															<p>
-																Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer varius tellus non nisl sodales semper. Morbi enim magna, congue non placerat vitae, dictum sit amet dui. Aliquam vehicula ut ligula sed pretium. Donec malesuada tortor eget elit. 
+																<%=testmonialsList.get(i+2).getMessage() %>
 															</p>
 														</div>
 														<div class="info">
 															<div style="text-align:right">
-																<h4>_Name Here</h4>
+																<h4><%=testmonialsList.get(i+2).getFullname() %></h4>
 															</div>
 															<div></div>
 																								
@@ -258,90 +283,18 @@
 													</div>
 												</div>
 												<div class="profile-circle">
-													<img style="max-height:100%;" src="<%=request.getContextPath()%>/images/profile-pic.png" />
+													<img style="border-radius: 50%; width:100px ; height: 100px" src="<%=testmonialsList.get(i+2).getImagepath() %>" />
 												</div>
 											</div>
+											<% } %>
 											<!--testmonial end-->        
 										</div>
 									  </div>
-									  <div class="item">
-										<div class="row">
-										  <!--testmonial start-->
-										<div class="col-md-4 col-sm-4 col-xs-12">
-											 <div class="parent-box red">
-												<div class="box">
-													<div class="dialog-box">
-														<p>
-															Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer varius tellus non nisl sodales semper. Morbi enim magna, congue non placerat vitae, dictum sit amet dui. Aliquam vehicula ut ligula sed pretium. Donec malesuada tortor eget elit. 
-														</p>
-													</div>
-													<div class="info">
-														<div style="text-align:right">
-															<h4>_Name Here</h4>
-														</div>
-														<div></div>
-																							
-													</div>
-												</div>
-											</div>
-											<div class="profile-circle">
-												<img style="max-height:100%;" src="<%=request.getContextPath()%>/images/profile-pic.png" />
-											</div>
-										</div>
-										<!--testmonial end-->         
-										  <!--testmonial start-->
-											<div class="col-md-4 col-sm-4 col-xs-12">
-												 <div class="parent-box red">
-													<div class="box">
-														<div class="dialog-box">
-															<p>
-																Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer varius tellus non nisl sodales semper. Morbi enim magna, congue non placerat vitae, dictum sit amet dui. Aliquam vehicula ut ligula sed pretium. Donec malesuada tortor eget elit. 
-															</p>
-														</div>
-														<div class="info">
-															<div style="text-align:right">
-																<h4>_Name Here</h4>
-															</div>
-															<div></div>
-																								
-														</div>
-													</div>
-												</div>
-												<div class="profile-circle">
-													<img style="max-height:100%;" src="<%=request.getContextPath()%>/images/profile-pic.png" />
-												</div>
-											</div>
-											<!--testmonial end-->
-										  <!--testmonial start-->
-											<div class="col-md-4 col-sm-4 col-xs-12">
-												 <div class="parent-box red">
-													<div class="box">
-														<div class="dialog-box">
-															<p>
-																Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer varius tellus non nisl sodales semper. Morbi enim magna, congue non placerat vitae, dictum sit amet dui. Aliquam vehicula ut ligula sed pretium. Donec malesuada tortor eget elit. 
-															</p>
-														</div>
-														<div class="info">
-															<div style="text-align:right">
-																<h4>_Name Here</h4>
-															</div>
-															<div></div>
-																								
-														</div>
-													</div>
-												</div>
-												<div class="profile-circle">
-													<img style="max-height:100%;" src="<%=request.getContextPath()%>/images/profile-pic.png" />
-												</div>
-											</div>
-											<!--testmonial end-->       
-										</div>
-									  </div>
-									 
+									  <%i=i+3;} %>
 									</div>
 									<a data-slide="prev" href="#media" class="left carousel-control glyphicon glyphicon-chevron-left"></a>
 									<a data-slide="next" href="#media" class="right carousel-control glyphicon glyphicon-chevron-right"></a>
-								  </div>                          
+								    </div>                  
 								</div>
 							  </div>
 							
@@ -482,11 +435,14 @@
 									<div class="col-xs-12">
 										<h5 class="blue-italic">Subscribe for Our Newsletter:</h5>
 										<div class="input-group">
-											<input type="text" class="form-control" placeholder="Enter Your Email">
+											<input type="email" name=email" id="email" class="form-control" placeholder="Enter Your Email" required="required">
 											<span class="input-group-btn">
-												<button type="button" class="btn btn-blue">SUBMIT</button>
+												<button type="button" onclick="subscription()" class="btn btn-blue">SUBMIT</button>
 											</span>
 										</div>
+										<div><b id="submsg" name="submsg"></b>
+										</div>
+										
 									</div>						
 								</div>
 								
@@ -541,13 +497,55 @@
 		})
 		
 	</script>
+	 <portlet:resourceURL var="resourceURL" />
 	<script>
+	function subscription(){
+		console.log($('#email').val());
+		if($('#email').val()==''){
+			if($('#submsg').hasClass( "green" )){
+			$('#submsg').removeClass("green");}
+			 $('#submsg').text('Please Enter EmailID..').addClass("red");
+		}
+		else{
+		var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+		  if (filter.test($('#email').val())) {
+		$.ajax({
+		    url : '<%=resourceURL.toString()%>',
+		    data : {
+		        <portlet:namespace />cmd : $('#email').val()
+		    },
+		      type : "POST",
+		      dataType: "text",
+		    success : function(data) {
+		        console.log(data);
+		        var obj = JSON.parse(data);
+		        if(obj.path=='Success'){
+		        if($('#submsg').hasClass( "red" )){
+		    	$('#submsg').removeClass("red");}
+		        $('#submsg').text('Thanks For Subscribing...').addClass("green");
+		        $('#email').val('');  
+		        }
+		    },
+		    error : function(response) {
+		       console.log("Error seen for loadDivisonDepName");
+		    }
+		});
+		
+		}
+		  else{
+			  if($('#submsg').hasClass( "green" )){
+					$('#submsg').removeClass("green");}
+			  $('#submsg').text('Please Enter Valid EmailID..').addClass("red");
+		  }
+	}
+	}
 		$(document).ready(function() {
 		  $('#media').carousel({
 			pause: true,
 			interval: false,
 		  });
 		});
+		
 	</script>
 <!-- <script type="text/javascript">
     var ismobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));

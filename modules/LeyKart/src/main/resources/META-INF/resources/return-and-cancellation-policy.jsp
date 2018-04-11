@@ -1,33 +1,34 @@
 <%@ include file="/init.jsp" %>
 
-<div id="fullpage" style="height: 100%;position: relative;margin-left: -30px;margin-top: -76px;margin-right: -15px;">
+<div id="fullpage" style="height: 100%;position: relative;margin-left: -30px;margin-top: -76px;margin-right: -26px;">
 	
 	<!-- Fixed navbar -->
+		<%-- <%@ include file="/header.jsp" %> --%>
 		<nav class="navbar navbar-default">
-		  <div class="container" >
-			<div class="pull-right" style="margin-right:15px; font-size:22px; color:#0288cf; font-weight:bold;"><img src="<%=request.getContextPath()%>/images/phone-top-icon.png" style="float:left; margin-right:14px;" />1800-208-2525</div>
-			<div class="clear"></div>
-			<div class="navbar-header">
-			  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			  </button>
-			  <div id="logo">
-				<a class="navbar-brand" href="/web/leykart/welcome"><img class="img-responsive" src="<%=request.getContextPath()%>/images/leykart-logo.png" alt="Leykart Ashok Leyland" /></a>
-			  </div>
-			</div>
-			<div id="navbar" class="navbar-collapse collapse">
-			  <ul class="nav navbar-nav navbar-right">
-				<li><a href="/web/leykart/welcome">HOME</a></li>
-				<li class="active"><a href="return-and-cancellation-policy">RETURN &amp; CANCELLATION POLICY</a></li>
-				<li><a href="/web/leykart/faq">FAQ'S</a></li>
-				<li><a href="/web/leykart/enquiry">ENQUIRY</a></li>
-			  </ul>
-			</div><!--/.nav-collapse -->
-		  </div>
-		</nav>
+				  <div class="container">
+					<div class="pull-right" style="margin-right:15px; font-size:22px; color:#0288cf; font-weight:bold;"><img src="<%=request.getContextPath()%>/images/phone-top-icon.png" style="float:left; margin-right:14px;" />1800-208-2525</div>
+					<div class="clear"></div>
+					<div class="navbar-header">
+					  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					  </button>
+					  <div id="logo">
+						<a class="navbar-brand" href="/web/leykart/welcome"><img class="img-responsive" src="<%=request.getContextPath()%>/images/leykart-logo.png" alt="Leykart Ashok Leyland" /></a>
+					  </div>
+					</div>
+					<div id="navbar" class="navbar-collapse collapse">
+					  <ul class="nav navbar-nav navbar-right">
+						<li><a href="/web/leykart/welcome">HOME</a></li>
+						<li class="active"><a href="/web/leykart/return-and-cancellation-policy">RETURN &amp; CANCELLATION POLICY</a></li>
+						<li><a href="/web/leykart/faq">FAQ'S</a></li>
+						<li><a href="/web/leykart/enquiry">ENQUIRY</a></li>
+					  </ul>
+					</div>
+				  </div>
+				</nav> 
 		<!-- Fixed navbar end-->
 		
 		<!-- inner banner strat-->

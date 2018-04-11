@@ -1,34 +1,35 @@
 <%@ include file="/init.jsp" %>
+<portlet:actionURL var="EnquiryForm" name="EnquiryForm"/>
 
-
-<div id="fullpage" style="height: 100%;position: relative;margin-left: -30px;margin-top: -76px;margin-right: -15px;">
+<div id="fullpage" style="height: 100%;position: relative;margin-left: -30px;margin-top: -76px;margin-right: -26px;">
 	
 	<!-- Fixed navbar -->
-		<nav class="navbar navbar-default">
-		  <div class="container">
-			<div class="pull-right" style="margin-right:15px; font-size:22px; color:#0288cf; font-weight:bold;"><img src="<%=request.getContextPath()%>/images/phone-top-icon.png" style="float:left; margin-right:14px;" />1800-208-2525</div>
-			<div class="clear"></div>
-			<div class="navbar-header">
-			  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			  </button>
-			  <div id="logo">
-				<a class="navbar-brand" href="/web/leykart/welcome"><img class="img-responsive" src="<%=request.getContextPath()%>/images/leykart-logo.png" alt="Leykart Ashok Leyland" /></a>
-			  </div>
-			</div>
-			<div id="navbar" class="navbar-collapse collapse">
-			  <ul class="nav navbar-nav navbar-right">
-				<li><a href="/web/leykart/welcome">HOME</a></li>
-				<li><a href="/web/leykart/return-and-cancellation-policy">RETURN &amp; CANCELLATION POLICY</a></li>
-				<li><a href="/web/leykart/faq">FAQ'S</a></li>
-				<li class="active"><a href="enquiry">ENQUIRY</a></li>
-			  </ul>
-			</div><!--/.nav-collapse -->
-		  </div>
-		</nav>
+	<%-- <%@ include file="/header.jsp" %> --%>
+	<nav class="navbar navbar-default">
+				  <div class="container">
+					<div class="pull-right" style="margin-right:15px; font-size:22px; color:#0288cf; font-weight:bold;"><img src="<%=request.getContextPath()%>/images/phone-top-icon.png" style="float:left; margin-right:14px;" />1800-208-2525</div>
+					<div class="clear"></div>
+					<div class="navbar-header">
+					  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					  </button>
+					  <div id="logo">
+						<a class="navbar-brand" href="/web/leykart/welcome"><img class="img-responsive" src="<%=request.getContextPath()%>/images/leykart-logo.png" alt="Leykart Ashok Leyland" /></a>
+					  </div>
+					</div>
+					<div id="navbar" class="navbar-collapse collapse">
+					  <ul class="nav navbar-nav navbar-right">
+						<li><a href="/web/leykart/welcome">HOME</a></li>
+						<li><a href="/web/leykart/return-and-cancellation-policy">RETURN &amp; CANCELLATION POLICY</a></li>
+						<li><a href="/web/leykart/faq">FAQ'S</a></li>
+						<li class="active"><a href="/web/leykart/enquiry">ENQUIRY</a></li>
+					  </ul>
+					</div>
+				  </div>
+				</nav> 
 		<!-- Fixed navbar end-->
 		
 		<!-- inner banner strat-->
@@ -51,36 +52,36 @@
 							<!-- Form -->
 							<div class="col-md-12 mb30"><h5 style="color:#757575; font-size:20px;">Please fill the below Enquiry form!</h5></div>
 							
-							<form id="contact-us" method="post" action="#">
+							<form name="contact-us" id="contact-us" method="post" action="<%=EnquiryForm.toString() %>" >
 								<!-- Left Inputs -->
 								<div class="col-md-6">
 									<!-- Name -->
-									<input type="text" name="firstName" id="firstName" required="required" class="form" placeholder="First Name" />
+									<input type="text" name="<portlet:namespace/>firstName" id="<portlet:namespace/>firstName" required="required" class="form" placeholder="First Name" />
 									<!-- Lastname -->
-									<input type="text" name="lastName" id="lastName" required="required" class="form" placeholder="Last Name" />
+									<input type="text" name="<portlet:namespace/>lastName" id="<portlet:namespace/>lastName" required="required" class="form" placeholder="Last Name" />
 									<!-- Email -->
-									<input type="email" name="mail" id="mail" required="required" class="form" placeholder="Email" />
+									<input type="email" name="<portlet:namespace/>mail" id="<portlet:namespace/>mail" required="required" class="form" placeholder="Email" />
 								</div><!-- End Left Inputs -->
 								<!-- Right Inputs -->
 								<div class="col-md-6">
 									<!-- Contact -->
-									<input type="text" name="contactNumber" id="contactNumber" required="required" class="form" placeholder="Contact Number" />
+									<input type="text" name="<portlet:namespace/>contactNumber" id="<portlet:namespace/>contactNumber" required="required" class="form" placeholder="Contact Number" />
 									<!-- PartName -->
-									<input type="text" name="partName" id="partName" required="required" class="form" placeholder="Part Name" />
+									<input type="text" name="<portlet:namespace/>partName" id="<portlet:namespace/>partName" required="required" class="form" placeholder="Part Name" />
 									<!-- PartNumber -->
-									<input type="text" name="partNumber" id="partNumber" required="required" class="form" placeholder="Part Number" />
+									<input type="text" name="<portlet:namespace/>partNumber" id="<portlet:namespace/>partNumber" required="required" class="form" placeholder="Part Number" />
 								</div><!-- End Right Inputs -->
 								<!-- Bottom Submit -->
 								
 								<div class="relative fullwidth col-md-12">
 									<!-- Message -->
-									<textarea name="message" id="message" class="form textarea"  placeholder="Message"></textarea>
+									<textarea name="<portlet:namespace/>message" id="<portlet:namespace/>message" class="form textarea"  placeholder="Message"></textarea>
 								</div>
 								
 								<div class="relative fullwidth col-md-12">
 									<!-- Send Button -->
 									<div class="pull-left" style="margin-right:20px;"><button type="submit" id="submit" name="submit" class="btn btn-orange">SUBMIT</button></div>
-									<div class="pull-left"><button id="cancel" name="cancel" class="btn btn-gray">CANCEL</button> </div>
+									<div class="pull-left"><button id="cancel" name="cancel" class="btn btn-gray" onclick="reset();">CANCEL</button> </div>
 								</div><!-- End Bottom Submit -->
 								<!-- Clear -->
 								
@@ -149,6 +150,9 @@
 		
 	</script>
 	<script>
+	function reset(){
+		$("#contact-us")[0].reset();
+	}
 		$(document).ready(function() {
 		  $('#media').carousel({
 			pause: true,
