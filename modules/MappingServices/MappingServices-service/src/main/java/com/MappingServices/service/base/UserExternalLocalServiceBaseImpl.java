@@ -19,6 +19,7 @@ import aQute.bnd.annotation.ProviderType;
 import com.MappingServices.model.UserExternal;
 
 import com.MappingServices.service.UserExternalLocalService;
+import com.MappingServices.service.persistence.EnquiryPersistence;
 import com.MappingServices.service.persistence.UserExternalPersistence;
 
 import com.liferay.portal.kernel.bean.BeanReference;
@@ -313,6 +314,43 @@ public abstract class UserExternalLocalServiceBaseImpl
 	}
 
 	/**
+	 * Returns the enquiry local service.
+	 *
+	 * @return the enquiry local service
+	 */
+	public com.MappingServices.service.EnquiryLocalService getEnquiryLocalService() {
+		return enquiryLocalService;
+	}
+
+	/**
+	 * Sets the enquiry local service.
+	 *
+	 * @param enquiryLocalService the enquiry local service
+	 */
+	public void setEnquiryLocalService(
+		com.MappingServices.service.EnquiryLocalService enquiryLocalService) {
+		this.enquiryLocalService = enquiryLocalService;
+	}
+
+	/**
+	 * Returns the enquiry persistence.
+	 *
+	 * @return the enquiry persistence
+	 */
+	public EnquiryPersistence getEnquiryPersistence() {
+		return enquiryPersistence;
+	}
+
+	/**
+	 * Sets the enquiry persistence.
+	 *
+	 * @param enquiryPersistence the enquiry persistence
+	 */
+	public void setEnquiryPersistence(EnquiryPersistence enquiryPersistence) {
+		this.enquiryPersistence = enquiryPersistence;
+	}
+
+	/**
 	 * Returns the user external local service.
 	 *
 	 * @return the user external local service
@@ -515,6 +553,10 @@ public abstract class UserExternalLocalServiceBaseImpl
 		}
 	}
 
+	@BeanReference(type = com.MappingServices.service.EnquiryLocalService.class)
+	protected com.MappingServices.service.EnquiryLocalService enquiryLocalService;
+	@BeanReference(type = EnquiryPersistence.class)
+	protected EnquiryPersistence enquiryPersistence;
 	@BeanReference(type = UserExternalLocalService.class)
 	protected UserExternalLocalService userExternalLocalService;
 	@BeanReference(type = UserExternalPersistence.class)

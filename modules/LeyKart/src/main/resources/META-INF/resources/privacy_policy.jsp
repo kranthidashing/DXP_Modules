@@ -1,5 +1,5 @@
 <%@ include file="/init.jsp" %>
-<div id="fullpage" style="height: 100%;position: relative;margin-left: -30px;margin-top: -76px;margin-right: -26px;">
+<div id="fullpage" style="height: 100%;position: relative;margin-left: -30px;margin-top: -76px;margin-right: -25px;">
 	
 	<!-- Fixed navbar -->
 	<%-- <%@ include file="/header.jsp" %> --%>

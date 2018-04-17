@@ -1,6 +1,7 @@
 <%@ include file="/init.jsp" %>
+<html>
 <body>
-<div id="fullpage" style="height: 100%;position: relative;margin-left: -30px;margin-top: -76px;margin-right: -26px;">
+<div id="fullpage" style="margin-top: -75px;  margin-left: -23px;  margin-right: -25px;">
 	
 	<!-- Fixed navbar -->
 		<%-- <%@ include file="/header.jsp" %> --%>
@@ -55,7 +56,7 @@
 			<div class="row">
 			  <!--left-->
 			  <div class="col-md-3" id="leftCol">
-				<ul class="nav nav-stacked" id="sidebar">
+				<ul class="nav nav-stacked" id="sidebar" ">
 					<h5 style="font-weight:600">Categories:</h5>
 				  <li><i class="fa fa-angle-double-right"></i><a href="#sec0">Account settings</a></li>
 				  <li><i class="fa fa-angle-double-right"></i><a href="#sec1">Searching</a></li>
@@ -237,13 +238,12 @@
 		</footer>
 	<!-- Footer End-->
 </div><!-- fullPageDiv End-->
-	<script src="js/bootstrap.min.js"></script>
+	<!-- <script src="js/bootstrap.min.js"></script>
 	<script src="js/showup.js"></script>
 	<script src="js/wow.js"></script>
+	 -->
 	
-	<script>
-	  new WOW().init();
-	  </script>
+
 	
 	<script>
 		/* activate sidebar */
@@ -255,10 +255,10 @@
 
 		/* activate scrollspy menu */
 		var $body   = $(document.body);
-		var navHeight = $('.navbar').outerHeight(true) + 10;
+		var navHeight = $('.navbar').outerHeight(true);
 
-		$body.scrollspy({
-			target: '#leftCol',
+		 $body.scrollspy({
+		//	target: '#leftCol',
 			offset: navHeight
 		});
 

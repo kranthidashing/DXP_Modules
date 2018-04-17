@@ -17,4 +17,16 @@
      <finder-column name="PolicyNumber"/>
      </finder>     
 	</entity>
+	<entity local-service="true" name="Enquiry" remote-service="true" uuid="true">
+     <column name="Eid" type="long" primary="true"></column>
+     <column name="FirstName" type="String"></column>
+     <column name="LastName" type="String"></column>
+     <column name="Email" type="String"></column>
+     <column name="ContactNumber" type="String"></column>
+     <column name="PartName" type="String"></column>
+     <column name="PartNumber" type="String"></column>
+     <column name="Message" type="String"></column>
+	 <column name="createDate" type="Date" />
+	 <column name="modifiedDate" type="Date" />   
+	</entity>
 </service-builder>

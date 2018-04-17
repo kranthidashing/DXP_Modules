@@ -1,7 +1,5 @@
 <%@ include file="/init.jsp" %>
-<portlet:actionURL var="EnquiryForm" name="EnquiryForm"/>
-
-<div id="fullpage" style="height: 100%;position: relative;margin-left: -30px;margin-top: -76px;margin-right: -26px;">
+<div id="fullpage" style="height: 100%;position: relative;margin-left: -30px;margin-top: -76px;margin-right: -25px;">
 	
 	<!-- Fixed navbar -->
 	<%-- <%@ include file="/header.jsp" %> --%>
@@ -50,44 +48,43 @@
 						<!-- Form Area -->
 						<div class="contact-form">
 							<!-- Form -->
+					        
 							<div class="col-md-12 mb30"><h5 style="color:#757575; font-size:20px;">Please fill the below Enquiry form!</h5></div>
-							
-							<form name="contact-us" id="contact-us" method="post" action="<%=EnquiryForm.toString() %>" >
+                                <form id="contact-us" method="post" action="#">
 								<!-- Left Inputs -->
 								<div class="col-md-6">
 									<!-- Name -->
-									<input type="text" name="<portlet:namespace/>firstName" id="<portlet:namespace/>firstName" required="required" class="form" placeholder="First Name" />
+									<input type="text" name="firstName" id="firstName" required="required" class="form" placeholder="First Name" />
 									<!-- Lastname -->
-									<input type="text" name="<portlet:namespace/>lastName" id="<portlet:namespace/>lastName" required="required" class="form" placeholder="Last Name" />
+									<input type="text" name="lastName" id="lastName" required="required" class="form" placeholder="Last Name" />
 									<!-- Email -->
-									<input type="email" name="<portlet:namespace/>mail" id="<portlet:namespace/>mail" required="required" class="form" placeholder="Email" />
+									<input type="email" name="mail" id="mail" required="required" class="form" placeholder="Email" />
 								</div><!-- End Left Inputs -->
 								<!-- Right Inputs -->
 								<div class="col-md-6">
 									<!-- Contact -->
-									<input type="text" name="<portlet:namespace/>contactNumber" id="<portlet:namespace/>contactNumber" required="required" class="form" placeholder="Contact Number" />
+									<input type="text" name="contactNumber" id="contactNumber" required="required" class="form" placeholder="Contact Number" />
 									<!-- PartName -->
-									<input type="text" name="<portlet:namespace/>partName" id="<portlet:namespace/>partName" required="required" class="form" placeholder="Part Name" />
+									<input type="text" name="partName" id="partName" required="required" class="form" placeholder="Part Name" />
 									<!-- PartNumber -->
-									<input type="text" name="<portlet:namespace/>partNumber" id="<portlet:namespace/>partNumber" required="required" class="form" placeholder="Part Number" />
+									<input type="text" name="partNumber" id="partNumber" required="required" class="form" placeholder="Part Number" />
 								</div><!-- End Right Inputs -->
 								<!-- Bottom Submit -->
 								
 								<div class="relative fullwidth col-md-12">
 									<!-- Message -->
-									<textarea name="<portlet:namespace/>message" id="<portlet:namespace/>message" class="form textarea"  placeholder="Message"></textarea>
+									<textarea name="message" id="message" class="form textarea"  placeholder="Message"></textarea>
 								</div>
 								
 								<div class="relative fullwidth col-md-12">
 									<!-- Send Button -->
-									<div class="pull-left" style="margin-right:20px;"><button type="submit" id="submit" name="submit" class="btn btn-orange">SUBMIT</button></div>
+									<div class="pull-left" style="margin-right:20px;"><button type="submit" onclick="addformdata();" name="submit" class="btn btn-orange">SUBMIT</button></div>
 									<div class="pull-left"><button id="cancel" name="cancel" class="btn btn-gray" onclick="reset();">CANCEL</button> </div>
 								</div><!-- End Bottom Submit -->
 								<!-- Clear -->
 								
 								<div class="clear"></div>
-							</form>
-
+                               </form>
 							<!-- Your Mail Message -->
 							<div class="mail-message-area">
 								<!-- Message -->
@@ -136,11 +133,11 @@
 		</footer>
 	<!-- Footer End-->
 </div><!-- fullPageDiv End-->
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/showup.js"></script>
-	<script src="js/wow.js"></script>
+
+
 	
 	<script>
+	
 	  new WOW().init();
 	  </script>
 	<script>
@@ -159,6 +156,22 @@
 			interval: false,
 		  });
 		});
+		
+ 		function addformdata(){ 
+ 			   var data = "/"+$("#firstName").val()+"/"+$("#lastName").val()+"/"+$("#mail").val()+"/"+$("#contactNumber").val()+"/"+$("#partName").val()+"/"+$("#partNumber").val()+"/"+$("#message").val();
+				$.ajax({
+			    url: "http://localhost:8080/o/RestMapping/greetings/insertenquirydata"+data,
+		        type: "POST",
+		        dataType: "json",
+			    success: function (response) {
+			    	reset();
+			    	console.log("Success");
+			    },
+			    error: function(error){
+			        console.log("Something went wrong", error);
+			    }
+			});
+		} 
 	</script>
 <!-- <script type="text/javascript">
     var ismobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));

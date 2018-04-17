@@ -17,6 +17,7 @@ package com.MappingServices.service.base;
 import com.MappingServices.model.UserExternal;
 
 import com.MappingServices.service.UserExternalService;
+import com.MappingServices.service.persistence.EnquiryPersistence;
 import com.MappingServices.service.persistence.UserExternalPersistence;
 
 import com.liferay.portal.kernel.bean.BeanReference;
@@ -53,6 +54,62 @@ public abstract class UserExternalServiceBaseImpl extends BaseServiceImpl
 	 *
 	 * Never modify or reference this class directly. Always use {@link com.MappingServices.service.UserExternalServiceUtil} to access the user external remote service.
 	 */
+
+	/**
+	 * Returns the enquiry local service.
+	 *
+	 * @return the enquiry local service
+	 */
+	public com.MappingServices.service.EnquiryLocalService getEnquiryLocalService() {
+		return enquiryLocalService;
+	}
+
+	/**
+	 * Sets the enquiry local service.
+	 *
+	 * @param enquiryLocalService the enquiry local service
+	 */
+	public void setEnquiryLocalService(
+		com.MappingServices.service.EnquiryLocalService enquiryLocalService) {
+		this.enquiryLocalService = enquiryLocalService;
+	}
+
+	/**
+	 * Returns the enquiry remote service.
+	 *
+	 * @return the enquiry remote service
+	 */
+	public com.MappingServices.service.EnquiryService getEnquiryService() {
+		return enquiryService;
+	}
+
+	/**
+	 * Sets the enquiry remote service.
+	 *
+	 * @param enquiryService the enquiry remote service
+	 */
+	public void setEnquiryService(
+		com.MappingServices.service.EnquiryService enquiryService) {
+		this.enquiryService = enquiryService;
+	}
+
+	/**
+	 * Returns the enquiry persistence.
+	 *
+	 * @return the enquiry persistence
+	 */
+	public EnquiryPersistence getEnquiryPersistence() {
+		return enquiryPersistence;
+	}
+
+	/**
+	 * Sets the enquiry persistence.
+	 *
+	 * @param enquiryPersistence the enquiry persistence
+	 */
+	public void setEnquiryPersistence(EnquiryPersistence enquiryPersistence) {
+		this.enquiryPersistence = enquiryPersistence;
+	}
 
 	/**
 	 * Returns the user external local service.
@@ -309,6 +366,12 @@ public abstract class UserExternalServiceBaseImpl extends BaseServiceImpl
 		}
 	}
 
+	@BeanReference(type = com.MappingServices.service.EnquiryLocalService.class)
+	protected com.MappingServices.service.EnquiryLocalService enquiryLocalService;
+	@BeanReference(type = com.MappingServices.service.EnquiryService.class)
+	protected com.MappingServices.service.EnquiryService enquiryService;
+	@BeanReference(type = EnquiryPersistence.class)
+	protected EnquiryPersistence enquiryPersistence;
 	@BeanReference(type = com.MappingServices.service.UserExternalLocalService.class)
 	protected com.MappingServices.service.UserExternalLocalService userExternalLocalService;
 	@BeanReference(type = UserExternalService.class)

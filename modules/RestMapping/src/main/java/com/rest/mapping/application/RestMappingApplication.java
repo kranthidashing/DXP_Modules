@@ -1,11 +1,13 @@
 package com.rest.mapping.application;
 
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -14,9 +16,11 @@ import javax.ws.rs.core.Application;
 
 import org.osgi.service.component.annotations.Component;
 
+import com.externalservices.model.leykartEnquiry;
+import com.externalservices.service.leykartEnquiryLocalServiceUtil;
+import com.liferay.counter.kernel.service.CounterLocalServiceUtil;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.json.JSONArray;
-import com.liferay.portal.kernel.json.JSONException;
 import com.liferay.portal.kernel.json.JSONFactoryUtil;
 import com.liferay.portal.kernel.json.JSONObject;
 import com.liferay.portal.kernel.util.Validator;
@@ -101,4 +105,24 @@ public class RestMappingApplication extends Application {
     	 createJSONArray.put(json2);		
 		return createJSONArray;		
 	}
+	
+	@POST
+	@Path("/insertenquirydata/{fname}/{lname}/{email}/{contactnumber}/{partname}/{partnumber}/{message}")
+	public void insertdata(@PathParam("fname") String fname,@PathParam("lname") String lname,@PathParam("email") String email,@PathParam("contactnumber") String contactnumber,@PathParam("partname") String partname,@PathParam("partnumber") String partnumber,@PathParam("message") String message){
+		leykartEnquiry createEnquiry = leykartEnquiryLocalServiceUtil.createleykartEnquiry(CounterLocalServiceUtil.increment());
+		createEnquiry.setFirstName(fname);
+		createEnquiry.setLastName(lname);
+		createEnquiry.setEmail(email);
+		createEnquiry.setContactNumber(contactnumber);
+		createEnquiry.setPartName(partname);
+		createEnquiry.setPartNumber(partnumber);
+		createEnquiry.setMessage(message);
+		createEnquiry.setCompanyId(1);
+		createEnquiry.setUserId(1);
+		createEnquiry.setUserName("test");
+		createEnquiry.setCreateDate(new Date());
+		createEnquiry.setModifiedDate(new Date());
+		leykartEnquiryLocalServiceUtil.addleykartEnquiry(createEnquiry);		
+	}
+	
 }

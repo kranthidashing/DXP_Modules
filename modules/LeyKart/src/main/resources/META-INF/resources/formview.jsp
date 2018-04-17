@@ -1,4 +1,5 @@
 <%@ include file="/init.jsp" %>
+<h2 style="margin-left: 17px;">Add User Form</h2>
 <portlet:actionURL var="addTestmonials" name="addTestmonials"/>
 <form name="addTestmonialsForm" id="addTestmonialsForm"  action="<%=addTestmonials.toString() %>" method="post"  enctype="multipart/form-data" >
 <div class="col-md-6">

@@ -107,7 +107,7 @@ public class UserPortlet extends MVCPortlet {
 			openId,locale,firstName,middleName,lastName,prefixId,suffixId,male,birthdayMonth,birthdayDay,birthdayYear,jobTitle,groupIds,organizationIds,roleIds,
 		    userGroupIds,sendEmail,serviceContext);	
 			UserExternal userext = UserExternalLocalServiceUtil.createUserExternal(user.getUserId());
-			userext.setLocation(Location);
+			//userext.setLocation(Location);
 			userext.setCreateDate(new Date());
 			userext.setModifiedDate(new Date());
 			UserExternalLocalServiceUtil.addUserExternal(userext);			
