@@ -30,14 +30,20 @@ import com.servicemapping.service.locationLocalServiceUtil;
 	property = {
 		"com.liferay.portlet.display-category=category.Mapping",
 		"com.liferay.portlet.instanceable=true",
-		"javax.portlet.display-name=SearchPortlet",
+		"javax.portlet.display-name=RolePermissionPortlet",
 		"javax.portlet.init-param.template-path=/",
-		"javax.portlet.init-param.view-template=/test.jsp",
-		"javax.portlet.name=SearchPortlet",
+		"javax.portlet.init-param.view-template=/rolepermission.jsp",
+		"javax.portlet.name=RolePermissionPortlet",
 		"javax.portlet.resource-bundle=content.Language",
 		"javax.portlet.security-role-ref=power-user,user"
 	},
 	service = Portlet.class
 )
-public class search extends MVCPortlet {
+public class Rolepermission extends MVCPortlet {
+	@Override
+	public void doView(RenderRequest renderRequest, RenderResponse renderResponse)
+			throws IOException, PortletException {
+		
+		super.doView(renderRequest, renderResponse);
+	}
 }

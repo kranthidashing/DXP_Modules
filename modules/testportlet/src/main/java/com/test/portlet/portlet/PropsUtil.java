@@ -18,7 +18,6 @@ public class PropsUtil {
             e.printStackTrace();
         }
     }
-    
     private static synchronized Properties getProperty(){
         if(props == null){
             new PropsUtil();

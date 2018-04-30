@@ -160,7 +160,7 @@
  		function addformdata(){ 
  			   var data = "/"+$("#firstName").val()+"/"+$("#lastName").val()+"/"+$("#mail").val()+"/"+$("#contactNumber").val()+"/"+$("#partName").val()+"/"+$("#partNumber").val()+"/"+$("#message").val();
 				$.ajax({
-			    url: "http://localhost:8080/o/RestMapping/greetings/insertenquirydata"+data,
+			    url: window.location.origin+"/o/RestMapping/greetings/insertenquirydata"+data,
 		        type: "POST",
 		        dataType: "json",
 			    success: function (response) {
