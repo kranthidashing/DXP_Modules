@@ -1,5 +1,6 @@
 package com.mappingportlet.portlet;
 
+import java.io.File;
 import java.util.Date;
 import java.util.Locale;
 
@@ -49,6 +50,8 @@ public class UserPortlet extends MVCPortlet {
 	public static void Email(String Firstname,String emailAddress, String password){
 		InternetAddress fromAddress = null;
 		InternetAddress toAddress = null;
+		File file = new File("E:\\text.pdf");
+        String fileName = "text.pdf"; 
 		String body = ContentUtil.get("/content/emailbody.tmpl", true);
 		body = StringUtil.replace(body, new String[] { "[$NAME$]","[$EMAIL$]","[$PASS$]" }, new String[] { Firstname,emailAddress,password});
 		try {
@@ -59,6 +62,7 @@ public class UserPortlet extends MVCPortlet {
 	    		mailMessage.setFrom(fromAddress);
 	    		mailMessage.setSubject("AshokLeyland_Creditals");
 	    		mailMessage.setBody(body);
+	    		mailMessage.addFileAttachment(file, fileName);
 				mailMessage.setHTMLFormat(true);
 	    		MailServiceUtil.sendEmail(mailMessage);
 	    		System.out.println("Send mail with Plain Text");
