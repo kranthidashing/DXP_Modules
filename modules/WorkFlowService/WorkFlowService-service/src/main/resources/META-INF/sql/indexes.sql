@@ -1,0 +1,1 @@
+create index IX_74098101 on Astra_Registration (uuid_[$COLUMN_LENGTH:75$], companyId);
