@@ -22,6 +22,8 @@ import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
 		service = Portlet.class
 	)
 
+
 public class ApprovalDashboardPortlet extends MVCPortlet {
+	
 
 }

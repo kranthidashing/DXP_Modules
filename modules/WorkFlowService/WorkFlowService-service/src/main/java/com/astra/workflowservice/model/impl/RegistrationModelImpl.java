@@ -113,7 +113,7 @@ public class RegistrationModelImpl extends BaseModelImpl<Registration>
 		TABLE_COLUMNS_MAP.put("modifiedDate", Types.TIMESTAMP);
 	}
 
-	public static final String TABLE_SQL_CREATE = "create table Astra_Registration (uuid_ VARCHAR(75) null,RegistrationId LONG not null primary key,firstname VARCHAR(75) null,lastname VARCHAR(75) null,course VARCHAR(75) null,email VARCHAR(75) null,location VARCHAR(75) null,status VARCHAR(75) null,comments VARCHAR(75) null,Workflowstepnumber VARCHAR(75) null,WorkflowId VARCHAR(75) null,CurrentApprover VARCHAR(75) null,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null)";
+	public static final String TABLE_SQL_CREATE = "create table Astra_Registration (uuid_ VARCHAR(75) null,RegistrationId LONG not null primary key,firstname VARCHAR(75) null,lastname VARCHAR(75) null,course VARCHAR(75) null,email VARCHAR(75) null,location VARCHAR(75) null,status VARCHAR(75) null,comments VARCHAR(75) null,Workflowstepnumber VARCHAR(75) null,WorkflowId VARCHAR(75) null,CurrentApprover TEXT null,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null)";
 	public static final String TABLE_SQL_DROP = "drop table Astra_Registration";
 	public static final String ORDER_BY_JPQL = " ORDER BY registration.RegistrationId ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY Astra_Registration.RegistrationId ASC";

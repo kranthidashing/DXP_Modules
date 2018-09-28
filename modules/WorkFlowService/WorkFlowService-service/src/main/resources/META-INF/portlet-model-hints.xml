@@ -13,7 +13,22 @@
 		<field name="comments" type="String" />
 		<field name="Workflowstepnumber" type="String" />
 		<field name="WorkflowId" type="String" />
-		<field name="CurrentApprover" type="String" />
+		<field name="CurrentApprover" type="String">
+			<hint name="max-length">9000</hint>
+		</field>
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+	</model>
+	<model name="com.astra.workflowservice.model.WorkFlowConfig">
+		<field name="uuid" type="String" />
+		<field name="WfcId" type="long" />
+		<field name="ConfigKey" type="String" />
+		<field name="Content" type="String">
+			<hint name="max-length">9000</hint>
+		</field>
 		<field name="companyId" type="long" />
 		<field name="userId" type="long" />
 		<field name="userName" type="String" />
